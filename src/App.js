@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { makeStyles } from "tss-react/mui";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import CoinPage from "./pages/CoinPage";
+import Home from "./pages/Home";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Footer from "./components/Footer";
+import { Box } from "@mui/material";
+
+const useStyles = makeStyles()(() => ({
+  App: {
+    backgroundColor: "#14161a",
+    minHeight: "100vh",
+    color: "white",
+  },
+}));
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 function App() {
+  const { classes } = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box className={classes.App}>
+      <ThemeProvider theme={darkTheme}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/coins/:id" element={<CoinPage />} />
+        </Routes>
+        <Footer />
+      </ThemeProvider>
+    </Box>
   );
 }
 
