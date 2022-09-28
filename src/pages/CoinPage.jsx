@@ -32,6 +32,7 @@ const useStyles = makeStyles()((theme) => ({
   heading: {
     fontWeight: "bold",
     marginBottom: 20,
+    textAlign: "center",
     fontFamily: "Montserrat",
   },
   description: {
