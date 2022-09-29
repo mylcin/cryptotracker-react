@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { CryptoState } from "../context/CryptoContext";
 import { HistoricalChart } from "../config/api";
 import { makeStyles } from "tss-react/mui";
-import { CircularProgress, TableContainer, Box } from "@mui/material";
+import { CircularProgress, Box } from "@mui/material";
 import { chartDays } from "../config/data";
 import CoinInfoButton from "./CoinInfoButton";
 import { Line } from "react-chartjs-2";
@@ -78,15 +78,18 @@ function CoinInfo({ coin }) {
           thickness={1}
         />
       ) : (
-        <TableContainer>
+        <>
           <Line
             data={{
               labels: historicData.map((coin) => {
                 let date = new Date(coin[0]);
+                let hour =
+                  date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`;
                 let time =
-                  date.getHours() > 12
-                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                    : `${date.getHours()}:${date.getMinutes()} AM`;
+                  date.getMinutes() > 9
+                    ? `${hour}:${date.getMinutes()}`
+                    : `${hour}:0${date.getMinutes()}`;
+
                 return days === 1 ? time : date.toLocaleDateString();
               }),
 
@@ -123,10 +126,9 @@ function CoinInfo({ coin }) {
               </CoinInfoButton>
             ))}
           </Box>
-        </TableContainer>
+        </>
       )}
     </Box>
   );
 }
-
 export default CoinInfo;

@@ -73,7 +73,6 @@ function CoinPage() {
     };
     fetchCoin();
   }, [id]);
-  console.log(coin);
 
   return (
     <>
@@ -97,27 +96,21 @@ function CoinPage() {
               </Typography>
               <Box className={classes.marketData}>
                 <span style={{ display: "flex" }}>
-                  <Typography variant="h6" className={classes.heading}>
-                    Rank:
-                  </Typography>
+                  <Box className={classes.heading}>Rank:</Box>
                   &nbsp; &nbsp;
-                  <Typography
-                    variant="h6"
+                  <Box
                     style={{
                       fontFamily: "Montserrat",
                     }}
                   >
                     {numberWithCommas(coin?.market_cap_rank)}
-                  </Typography>
+                  </Box>
                 </span>
 
                 <span style={{ display: "flex" }}>
-                  <Typography variant="h6" className={classes.heading}>
-                    Current Price:
-                  </Typography>
+                  <Box className={classes.heading}>Current Price:</Box>
                   &nbsp; &nbsp;
-                  <Typography
-                    variant="h6"
+                  <Box
                     style={{
                       fontFamily: "Montserrat",
                     }}
@@ -126,15 +119,12 @@ function CoinPage() {
                       coin?.market_data.current_price[currency.toLowerCase()]
                     )}{" "}
                     {symbol}
-                  </Typography>
+                  </Box>
                 </span>
                 <span style={{ display: "flex" }}>
-                  <Typography variant="h6" className={classes.heading}>
-                    Market Cap:
-                  </Typography>
+                  <Box className={classes.heading}>Market Cap:</Box>
                   &nbsp; &nbsp;
-                  <Typography
-                    variant="h6"
+                  <Box
                     style={{
                       fontFamily: "Montserrat",
                     }}
@@ -145,7 +135,7 @@ function CoinPage() {
                       ].toString()
                     )}{" "}
                     {symbol}
-                  </Typography>
+                  </Box>
                 </span>
               </Box>
             </Box>
