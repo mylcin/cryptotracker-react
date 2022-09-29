@@ -49,6 +49,7 @@ function Carousel() {
           src={coin?.image}
           alt={coin.name}
           height="80"
+          width="80"
           style={{ marginBottom: 10 }}
         />
         <span>
